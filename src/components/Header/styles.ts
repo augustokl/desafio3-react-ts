@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 interface ContainerProps {
   size?: 'small' | 'large';
+}
+
+interface LinkRouteProps {
+  selected?: true | false;
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -15,22 +20,23 @@ export const Container = styled.div<ContainerProps>`
     display: flex;
     align-items: center;
     justify-content: space-between;
+  }
+`;
 
-    nav {
-      a {
-        color: #fff;
-        text-decoration: none;
-        font-size: 16px;
-        transition: opacity 0.2s;
+export const LinkRoute = styled(Link)<LinkRouteProps>`
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: opacity 0.2s;
+  border-bottom: ${props => (props.selected ? '2px solid #ff872c' : 'none')};
+  opacity: ${props => (props.selected ? '1' : '0.4')};
+  padding-bottom: 5px;
 
-        & + a {
-          margin-left: 32px;
-        }
+  & + a {
+    margin-left: 32px;
+  }
 
-        &:hover {
-          opacity: 0.6;
-        }
-      }
-    }
+  &:hover {
+    opacity: 0.6;
   }
 `;
